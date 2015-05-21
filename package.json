@@ -1,0 +1,9 @@
+{
+    "name": "weixin_airsync",
+    "version": "0.0.1",
+    "main": "./index",
+    "description": "use test weixin AirSync BLE",
+    "dependencies": {
+        "bleno": ">=0.1.13"
+    }
+}
