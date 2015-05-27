@@ -4,6 +4,7 @@
     "main": "./index",
     "description": "use test weixin AirSync BLE",
     "dependencies": {
-        "bleno": ">=0.1.13"
+        "bleno": ">=0.1.13",
+        "protobufjs": "~3.7"
     }
 }

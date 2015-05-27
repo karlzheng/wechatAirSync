@@ -1,5 +1,6 @@
 var util = require('util');
 var bleno = require('bleno');
+var wechat = require('./wechat');
 
 var BlenoPrimaryService = bleno.PrimaryService;
 var BlenoCharacteristic = bleno.Characteristic;
@@ -7,6 +8,7 @@ var BlenoDescriptor = bleno.Descriptor;
 
 console.log('bleno');
 var LocaleMACAddr = new Buffer([0x28, 0xE3, 0x47, 0x65, 0x36, 0x39]);
+var DeviceIdName = "Sulong";
 
 var IndicateCharacteristics = function() {
   IndicateCharacteristics.super_.call(this, {
@@ -19,14 +21,32 @@ util.inherits(IndicateCharacteristics, BlenoCharacteristic);
 
 var updateCallback;
 var count = 0;
+var senddatabuf = [];
 
-IndicateCharacteristics.sendData = function() {
-    var MagicNumber = 0xfe
-        , Ver = 1
-        , len = 1
-        , CmdId = 10000
-        , Seq = count;
-    
+var test = function() {
+    wechat.device_auth(LocaleMACAddr, "WeChatBluetoothDevice");
+};
+
+IndicateCharacteristics.send_data = function() {
+    var data = [];
+    switch(count) {
+        case 1:
+            senddatabuf = wechat.device_auth(LocaleMACAddr, DeviceIdName);
+            // console.log(senddatabuf);
+            break;
+    };
+    if (count < 100) {
+        count = count + 1;
+    }
+    if (senddatabuf.length > 20) {
+        data = senddatabuf.slice(0, 20);
+        senddatabuf = senddatabuf.slice(20, senddatabuf.length);
+        // console.log(senddatabuf);
+        // console.log(data);
+    } else {
+        data = senddatabuf;
+    }
+    updateCallback(data);
 };
 
 IndicateCharacteristics.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
@@ -34,9 +54,7 @@ IndicateCharacteristics.prototype.onSubscribe = function(maxValueSize, updateVal
   updateCallback = updateValueCallback;
   count = 1;
   setTimeout(function() {
-      var data = new Buffer([0xfe, 0x01, 0x00, 0x26, 0x27, 0x11, 0x00, 0x01, 0x0a, 0x00, 0x12, 0x10, 0x79, 0xa3, 0xb5, 0x9e, 0x72, 0x6a, 0xac, 0x94]); 
-          // 0x15, 0x59, 0xcc, 0xbb, 0x1d, 0xe4, 0x2f, 0xdd, 0x18, 0x82, 0x80, 0x04, 0x20, 0x01, 0x28, 0x01, 0x32, 0x00]);
-      updateCallback(data);
+      IndicateCharacteristics.send_data();
   }, 1000);
 };
 
@@ -46,10 +64,8 @@ IndicateCharacteristics.prototype.onUnsubscribe  = function() {
 
 IndicateCharacteristics.prototype.onIndicate = function() {
   console.log('IndicateCharacteristics on indicate');
-  var data = new Buffer([0x15, 0x59, 0xcc, 0xbb, 0x1d, 0xe4, 0x2f, 0xdd, 0x18, 0x82, 0x80, 0x04, 0x20, 0x01, 0x28, 0x01, 0x32, 0x00]);
-  if (count == 1) {
-      count = 2;
-      updateCallback(data);
+  if (count == 2) {
+      IndicateCharacteristics.send_data();
   }
 };
 
