@@ -8,6 +8,7 @@ enum  EmCmdId {
 	ECI_req_auth = 10001;                       // 登录
 	ECI_req_sendData = 10002;                   // 蓝牙设备发送数据给微信或厂商
 	ECI_req_init = 10003;                       // 初始化
+	ECI_req_senddata = 10004;                       // send data
 
 	// resp：微信/厂商服务器 -> 蓝牙设备
 	ECI_resp_auth = 20001;

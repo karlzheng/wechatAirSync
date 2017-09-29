@@ -9,9 +9,6 @@ var BlenoCharacteristic = bleno.Characteristic;
 var BlenoDescriptor = bleno.Descriptor;
 
 console.log('bleno');
-
-let DeviceName = "GumpWX";
-
 var readlocalhost = function() {
     var mac = new Buffer(6);
     for (var i=0; i<6; i++) {
@@ -52,7 +49,7 @@ util.inherits(WriteOnlyCharacteristic, BlenoCharacteristic);
 
 WriteOnlyCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   writeBuf = new Buffer.concat([writeBuf, data]);
-  console.log('WriteOnlyCharacteristic Write request: ' + writeBuf.toString('hex') + ' ' + offset + ' ' + withoutResponse);
+  console.log('Write request: ' + data.toString('hex') + ' ' + offset + ' ' + withoutResponse);
   var ret = wechat.wechat_resp(writeBuf);
   switch(ret[0]) {
     case 20001:
@@ -67,6 +64,14 @@ WriteOnlyCharacteristic.prototype.onWriteRequest = function(data, offset, withou
       break;
   }
   callback(this.RESULT_SUCCESS);
+
+  if (ret[0] == 20003) {
+	  setTimeout(function() {
+		  console.log("after 20003");
+		  IndicateCharacteristic.send_data(3);
+	  }, 1000);
+  }
+
 };
 
 
@@ -105,6 +110,7 @@ IndicateCharacteristic.send_count_data = function() {
 IndicateCharacteristic.send_data = function(step) {
     var data = [];
 	runStep = step;
+	DeviceName = "GumpWX";
     switch(step) {
         case 1:
             senddatabuf = wechat.device_auth(localeMACAddr, DeviceName);
@@ -112,6 +118,11 @@ IndicateCharacteristic.send_data = function(step) {
             break;
 		case 2:
 			senddatabuf = wechat.device_init();
+            break;
+
+		case 3:
+			senddatabuf = wechat.device_SendDataRequest();
+            break;
     };
 	IndicateCharacteristic.send_count_data();
 };
@@ -151,10 +162,9 @@ bleno.on('stateChange', function(state) {
 
   localeMACAddr = readlocalhost();
   if (state === 'poweredOn') {
-    var advData = new Buffer([0x02, 0x01, 0x06, 0x03, 0x03, 0xE7, 0xFE,
-	0x07, 0x09, 0x47, 0x75, 0x6D, 0x70, 0x57, 0x58, // GumpWX
-        0x09, 0xFF, 0x33, 0x02,
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
+    var advData = new Buffer([0x02, 0x01, 0x06, 0x03, 0x03, 0xE7, 0xFE, 0x07, 0x09,
+		0x47, 0x75, 0x6D, 0x70, 0x57, 0x58, // GumpWX
+        0x09, 0xFF, 0x33, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
     var mac = localeMACAddr;
     for (var i=0; i<6; i++) {
         advData[19+i] = mac[i];

@@ -6,6 +6,10 @@ var wechat = ProtoBuf.loadProtoFile("./wechat.proto");
 var AuthRequest = wechat.build("AuthRequest");
 var AuthResponse = wechat.build("AuthResponse");
 var InitRequest = wechat.build("InitRequest"); 
+var InitResponse = wechat.build("InitResponse");
+
+var SendDataRequest = wechat.build("SendDataRequest");
+
 var MagicNumber = 0xfe
     , Ver = 1
     , CmdId = 10001
@@ -92,3 +96,13 @@ exports.device_init = function() {
     // console.log(msg);
     return epb_pack_request(BpFixHead, msg.encode().toBuffer(), 10003);
 };
+
+exports.device_SendDataRequest = function() {
+	var msg = new SendDataRequest();
+    var bq = new Buffer(0);
+	msg.set('BaseRequest', bq);
+	msg.set('Data', bq);
+	var head = new Buffer('fe01000c27120003', 'hex');
+	return epb_pack_request(head, msg.encode().toBuffer(), 10004);
+};
+
