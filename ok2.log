@@ -1,0 +1,280 @@
+
+bleno
+on -> stateChange: poweredOn, address = 00:1a:7d:da:71:13
+<Buffer 00 1a 7d da 71 13>
+on -> advertisingStart: success
+on -> servicesSet: success
+
+on -> accept, client: 47:77:f2:f0:f7:49
+on -> rssiUpdate: -66
+IndicateCharacteristic subscribe
+Cmd:10001
+BpProxy.CmdId:10001
+head=8 fe01002227110001
+len=34 fe010022271100010a0018848004200128023a06001a7dda7113620647756d705758
+send: fe010022271100010a0018848004200128023a06
+IndicateCharacteristic on indicate
+send: 001a7dda7113620647756d705758
+Write request: fe01000e4e2100010a0208001200 0 false
+Len=14 Cmd=20001 Seq=1 0a0208001200
+cmd:20001
+len:14
+respBuf:0a0208001200
+ret0:20001
+Cmd:10003
+BpProxy.CmdId:10003
+head=8 fe01001027130002
+len=16 fe010010271300020a001a0431323334
+send: fe010010271300020a001a0431323334
+IndicateCharacteristic on indicate
+Write request: fe0100194e2300020a02080010b42418f8ac0120 0 false
+Len=0 Cmd=0 Seq=0
+ret0:0
+Write request: a3c18fdf09 0 false
+Len=25 Cmd=20003 Seq=2 0a02080010b42418f8ac0120a3c18fdf09
+cmd:20003
+len:25
+respBuf:0a02080010b42418f8ac0120a3c18fdf09
+ret0:20003
+after 20003
+object
+{ BaseRequest: null, Data: null, Type: null }
+{ BaseRequest: {},
+  Data:
+   { buffer: <Buffer >,
+     offset: 0,
+     markedOffset: -1,
+     limit: 0,
+     littleEndian: false,
+     noAssert: false },
+  Type: null }
+Cmd:10004
+BpProxy.CmdId:10004
+
+head=8 fe01000c27120003
+len=12 fe01000c271200030a001200
+send: fe01000c271200030a001200
+IndicateCharacteristic on indicate
+Write request: fe0100124e2200030a02080012040a001200 0 false
+Len=18 Cmd=20002 Seq=3 0a02080012040a001200
+cmd:20002
+len:18
+respBuf:0a02080012040a001200
+ret0:20002
+Write request: fe010016753100000a0012083132333435363738 0 false
+Len=0 Cmd=0 Seq=0
+ret0:0
+Write request: 1800 0 false
+Len=22 Cmd=30001 Seq=0 0a00120831323334353637381800
+cmd:30001
+len:22
+respBuf:0a00120831323334353637381800
+ret0:30001
+Write request: fe010017753100000a0012083132333435363738 0 false
+Len=0 Cmd=0 Seq=0
+ret0:0
+Write request: 18914e 0 false
+Len=23 Cmd=30001 Seq=0 0a001208313233343536373818914e
+cmd:30001
+len:23
+respBuf:0a001208313233343536373818914e
+ret0:30001
+Write request: fe01000e753100000a0012001801 0 false
+Len=14 Cmd=30001 Seq=0 0a0012001801
+cmd:30001
+len:14
+respBuf:0a0012001801
+ret0:30001
+Write request: fe01000e753200000a0010011801 0 false
+Len=14 Cmd=30002 Seq=0 0a0010011801
+cmd:30002
+len:14
+respBuf:0a0010011801
+ret0:30002
+Write request: fe01000e753200000a0010021801 0 false
+Len=14 Cmd=30002 Seq=0 0a0010021801
+cmd:30002
+len:14
+respBuf:0a0010021801
+ret0:30002
+Write request: fe01000e753200000a0010011802 0 false
+Len=14 Cmd=30002 Seq=0 0a0010011802
+cmd:30002
+len:14
+respBuf:0a0010011802
+ret0:30002
+Write request: fe01000e753200000a0010021802 0 false
+Len=14 Cmd=30002 Seq=0 0a0010021802
+cmd:30002
+len:14
+respBuf:0a0010021802
+ret0:30002
+Write request: fe01000c753300000a001001 0 false
+Len=12 Cmd=30003 Seq=0 0a001001
+cmd:30003
+len:12
+respBuf:0a001001
+ret0:30003
+Write request: fe01000c753300000a001002 0 false
+Len=12 Cmd=30003 Seq=0 0a001002
+cmd:30003
+len:12
+respBuf:0a001002
+ret0:30003
+Write request: fe01000c753300000a001003 0 false
+Len=12 Cmd=30003 Seq=0 0a001003
+cmd:30003
+len:12
+respBuf:0a001003
+ret0:30003
+
+
+IndicateCharacteristic unsubscribe
+on -> disconnect, client: 47:77:f2:f0:f7:49
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+on -> accept, client: 47:77:f2:f0:f7:49
+on -> rssiUpdate: -64
+IndicateCharacteristic subscribe
+Cmd:10001
+BpProxy.CmdId:10001
+head=8 fe01002227110004
+len=34 fe010022271100040a0018848004200128023a06001a7dda7113620647756d705758
+send: fe010022271100040a0018848004200128023a06
+IndicateCharacteristic on indicate
+send: 001a7dda7113620647756d705758
+Write request: fe01000e4e2100040a0208001200 0 false
+Len=14 Cmd=20001 Seq=4 0a0208001200
+cmd:20001
+len:14
+respBuf:0a0208001200
+ret0:20001
+Cmd:10003
+BpProxy.CmdId:10003
+head=8 fe01001027130005
+len=16 fe010010271300050a001a0431323334
+send: fe010010271300050a001a0431323334
+IndicateCharacteristic on indicate
+Write request: fe0100194e2300050a02080010b42418f8ac0120 0 false
+Len=0 Cmd=0 Seq=0
+ret0:0
+Write request: a3c18fdf09 0 false
+Len=25 Cmd=20003 Seq=5 0a02080010b42418f8ac0120a3c18fdf09
+cmd:20003
+len:25
+respBuf:0a02080010b42418f8ac0120a3c18fdf09
+ret0:20003
+after 20003
+object
+{ BaseRequest: null, Data: null, Type: null }
+{ BaseRequest: {},
+  Data:
+   { buffer: <Buffer >,
+     offset: 0,
+     markedOffset: -1,
+     limit: 0,
+     littleEndian: false,
+     noAssert: false },
+  Type: null }
+Cmd:10004
+BpProxy.CmdId:10004
+head=8 fe01000c27120003
+len=12 fe01000c271200030a001200
+send: fe01000c271200030a001200
+IndicateCharacteristic on indicate
+Write request: fe0100124e2200030a02080012040a001200 0 false
+Len=18 Cmd=20002 Seq=3 0a02080012040a001200
+cmd:20002
+len:18
+respBuf:0a02080012040a001200
+ret0:20002
+Write request: fe010016753100000a0012083132333435363738 0 false
+Len=0 Cmd=0 Seq=0
+ret0:0
+Write request: 1800 0 false
+Len=22 Cmd=30001 Seq=0 0a00120831323334353637381800
+cmd:30001
+len:22
+respBuf:0a00120831323334353637381800
+ret0:30001
+Write request: fe010017753100000a0012083132333435363738 0 false
+Len=0 Cmd=0 Seq=0
+ret0:0
+Write request: 18914e 0 false
+Len=23 Cmd=30001 Seq=0 0a001208313233343536373818914e
+cmd:30001
+len:23
+respBuf:0a001208313233343536373818914e
+ret0:30001
+Write request: fe01000e753100000a0012001801 0 false
+Len=14 Cmd=30001 Seq=0 0a0012001801
+cmd:30001
+len:14
+respBuf:0a0012001801
+ret0:30001
+Write request: fe01000e753200000a0010011801 0 false
+Len=14 Cmd=30002 Seq=0 0a0010011801
+cmd:30002
+len:14
+respBuf:0a0010011801
+ret0:30002
+Write request: fe01000e753200000a0010021801 0 false
+Len=14 Cmd=30002 Seq=0 0a0010021801
+cmd:30002
+len:14
+respBuf:0a0010021801
+ret0:30002
+Write request: fe01000e753200000a0010011802 0 false
+Len=14 Cmd=30002 Seq=0 0a0010011802
+cmd:30002
+len:14
+respBuf:0a0010011802
+ret0:30002
+Write request: fe01000e753200000a0010021802 0 false
+Len=14 Cmd=30002 Seq=0 0a0010021802
+cmd:30002
+len:14
+respBuf:0a0010021802
+ret0:30002
+Write request: fe01000c753300000a001001 0 false
+Len=12 Cmd=30003 Seq=0 0a001001
+cmd:30003
+len:12
+respBuf:0a001001
+ret0:30003
+Write request: fe01000c753300000a001002 0 false
+Len=12 Cmd=30003 Seq=0 0a001002
+cmd:30003
+len:12
+respBuf:0a001002
+ret0:30003
+Write request: fe01000c753300000a001003 0 false
+Len=12 Cmd=30003 Seq=0 0a001003
+cmd:30003
+len:12
+respBuf:0a001003
+ret0:30003
+IndicateCharacteristic unsubscribe
+on -> disconnect, client: 47:77:f2:f0:f7:49
+
+
+
+
+
