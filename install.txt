@@ -1,0 +1,6 @@
+https://www.npmjs.com/package/noble
+
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+sudo apt-get install bluetooth bluez libbluetooth-dev libudev-de
+
+sudo npm install bluetooth-hci-socket
